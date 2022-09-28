@@ -1,1 +1,57 @@
 
+#include<Servo.h>
+int t=2;
+int e=3;
+int led=12;
+int sensor=7;
+int buz=5;
+int state=LOW;
+int val=0;
+Servo s;
+void setup()
+{
+  pinMode(led, OUTPUT);
+  pinMode(sensor,INPUT);
+  pinMode(t,OUTPUT);
+  pinMode(e,INPUT);
+  pinMode(buz,OUTPUT);
+  s.attach(9);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  val=digitalRead(sensor);
+  if(val==HIGH)
+  {
+    digitalWrite(led,HIGH);
+    delay(500);
+  }
+    digitalWrite(t,0);
+    digitalWrite(t,1);
+    delayMicroseconds(10);
+    digitalWrite(t,0);
+    float dur =pulseIn(e,HIGH);
+    float dis=(dur*0.0343)/2;
+    Serial.print(dis);
+    if(dis<100)
+      s.write(180);
+    else
+      s.write(0);
+     double T=analogRead(A0);
+     double  te=(((T/1024)*5)-0.5)*100;
+     if(te>70)
+       tone(5,100);
+     else
+       noTone(0);
+}
+      
+      
+     
+   
+
+
+
+   
+   
+ 
