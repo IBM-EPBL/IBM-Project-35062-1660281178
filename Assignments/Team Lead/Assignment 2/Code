@@ -1,1 +1,22 @@
+import random 
+temp=random.randint(1,100)
+humidity=random.randint(1,100)
+print(temp)              
+print(humidity)
 
+if ((temp<30)&(humidity<50)):
+    print("temperature is normal :")
+    print("humidity is normal:")
+    
+elif((temp<30)&(humidity>50)):
+    print("temperature is low")
+    print("humidity is high")
+elif((temp>30) & (humidity<50)):
+    print("temperature is high:")
+    print("humidity is normal")   
+elif((temp>30) & (humidity<60)):
+    print("temperature is high")
+    print("humidity is normal:")
+elif((temp>30) & (humidity>60)):
+    print("temperature is high")
+    print("humidity is high")
